@@ -1,9 +1,5 @@
 <?php
 require_once './services/User.php';
-require_once './services/Cart.php';
-
-$cart = new Cart();
-$cart->empty_cart();
 
 $user = new User();
 ?>
