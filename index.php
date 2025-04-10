@@ -5,7 +5,13 @@ require_once 'services/User.php';
 $user = new User();
 
 $productsObj = new Products();
-$products = $productsObj->get_products();
+
+$searchTerm = isset($_GET['search']) ? trim($_GET['search']) : '';
+if ($searchTerm !== '') {
+    $products = $productsObj->get_products($searchTerm);
+} else {
+    $products = $productsObj->get_products();
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +54,17 @@ $products = $productsObj->get_products();
     <main>
         <div class="container py-5">
             <h1 class="text-center mb-5">Product Catalog</h1>
+
+            <form method="GET" class="mb-4">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <input type="text" name="search" class="form-control" placeholder="Search for products..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
 
             <?php if (!empty($products)) : ?>
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">

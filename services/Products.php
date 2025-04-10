@@ -35,15 +35,21 @@ class Products
         }
     }
 
-    function get_products()
+    function get_products($search = '')
     {
         $db = new DatabaseConnection();
         $dbc = $db->get_dbc();
 
+        // Default query
         $query = "SELECT * FROM products";
 
-        $result = mysqli_query($dbc, $query);
+        // If search term is provided, modify the query
+        if (!empty($search)) {
+            $search = mysqli_real_escape_string($dbc, $search);
+            $query .= " WHERE name LIKE '%$search%' OR brand LIKE '%$search%'";
+        }
 
+        $result = mysqli_query($dbc, $query);
         $products = [];
 
         if ($result) {
@@ -54,6 +60,7 @@ class Products
 
         return $products;
     }
+
 
     function get_product_by_id($product_id)
     {
