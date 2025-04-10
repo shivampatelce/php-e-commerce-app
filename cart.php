@@ -54,7 +54,7 @@ $cart = $cartObj->get_cart();
         </div>
     </nav>
     <div class="container py-5">
-        <h2>Your Cart</h2>
+        <h2 class="text-center mb-4">Cart</h2>
 
         <?php if (empty($cart)) : ?>
             <div class="alert alert-warning text-center">

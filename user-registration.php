@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class="alert alert-danger"><?php echo $errors['general']; ?></div>
                         <?php endif; ?>
 
-                        <form method="POST" novalidate>
+                        <form method="POST" id="registerForm" novalidate>
                             <div class="mb-3">
                                 <label for="first_name" class="form-label">First Name</label>
                                 <input type="text" class="form-control <?php echo !empty($errors['first_name']) ? 'is-invalid' : ''; ?>" name="first_name" id="first_name" value="<?php echo htmlspecialchars($data['first_name']); ?>">
@@ -145,6 +145,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('email').addEventListener('blur', function() {
+            let email = this.value.trim();
+            let emailExists = false;
+
+            if (email === '') return;
+
+            let xhr = new XMLHttpRequest();
+
+            xhr.open('POST', 'check_email.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            let data = JSON.stringify({
+                email: email
+            });
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var response = JSON.parse(xhr.responseText);
+
+                    // Check if the email exists
+                    if (response.exists) {
+                        // If exists, show error message
+                        document.getElementById('email').classList.add('is-invalid');
+                        document.getElementById('email').nextElementSibling.textContent = 'Email already exists.';
+                        emailExists = true;
+                    } else {
+                        // If does not exist, remove error message
+                        document.getElementById('email').classList.remove('is-invalid');
+                        document.getElementById('email').nextElementSibling.textContent = '';
+                        emailExists = false;
+                    }
+
+                    // Disable or enable submit button based on email existence
+                    document.getElementById('registerForm').querySelector('button[type="submit"]').disabled = emailExists;
+                }
+            };
+
+            // Send the request with the email data
+            xhr.send(data);
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

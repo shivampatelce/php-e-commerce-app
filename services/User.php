@@ -87,6 +87,43 @@ class User
         return isset($_SESSION['user']);
     }
 
+    function get_full_name()
+    {
+        if (isset($_SESSION['user'])) {
+            $first_name = $_SESSION['user']['first_name'];
+            $last_name = $_SESSION['user']['last_name'];
+            return $first_name . ' ' . $last_name;
+        }
+        return null;
+    }
+
+
+    function check_email_exists($email)
+    {
+        $db = new DatabaseConnection();
+        $dbc = $db->get_dbc();
+
+        $email = $db->prepare_string($dbc, $email);
+
+        $query = "SELECT id FROM user WHERE email = ?";
+
+        if ($stmt = mysqli_prepare($dbc, $query)) {
+            mysqli_stmt_bind_param($stmt, "s", $email);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_store_result($stmt);
+
+            if (mysqli_stmt_num_rows($stmt) > 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+            mysqli_stmt_close($stmt);
+        }
+
+        return false;
+    }
+
     function logout()
     {
         session_destroy();

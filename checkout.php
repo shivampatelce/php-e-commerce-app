@@ -91,9 +91,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main class="container my-5">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <h3 class="mb-4">Checkout</h3>
+                <h3 class="mb-4 text-center">Checkout</h3>
 
-                <form method="POST">
+                <form class="card p-4" method="POST">
                     <h5 class="mb-3">Shipping Address</h5>
                     <div class="row">
                         <div class="col-md-12 mb-3">
@@ -171,6 +171,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             </div>
         </div>
+
+
+        <form class="text-center mt-4" action="generate_invoice.php" method="post">
+            <button class="btn btn-primary btn-lg" type="submit">Download Invoice</button>
+        </form>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
