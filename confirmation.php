@@ -1,7 +1,12 @@
 <?php
 require_once './services/User.php';
+require_once './services/Cart.php';
 
 $user = new User();
+$cart = new Cart();
+
+$cart->empty_cart();
+
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +22,7 @@ $user = new User();
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Logo</a>
+            <a class="navbar-brand" href="index.php">NextGadgets</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -45,7 +50,6 @@ $user = new User();
         <div class="text-center">
             <h2>Order Confirmation</h2>
             <p>Your order has been successfully placed. Thank you for shopping with us!</p>
-            <a href="generate_receipt.php" class="btn btn-primary">Generate Receipt</a>
             <a href="index.php" class="btn btn-primary">Continue Shopping</a>
         </div>
     </main>

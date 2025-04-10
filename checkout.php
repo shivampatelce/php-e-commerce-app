@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Logo</a>
+            <a class="navbar-brand" href="index.php">NextGadgets</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -157,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <div class="col-md-6 mb-3">
                             <label for="cvv" class="form-label">CVV</label>
-                            <input type="text" class="form-control <?php echo !empty($errors['cvv']) ? 'is-invalid' : ''; ?>" id="cvv" name="cvv" maxlength="4" value="<?php echo htmlspecialchars($data['cvv']); ?>">
+                            <input type="password" class="form-control <?php echo !empty($errors['cvv']) ? 'is-invalid' : ''; ?>" id="cvv" name="cvv" maxlength="4" value="<?php echo htmlspecialchars($data['cvv']); ?>">
                             <?php if (!empty($errors['cvv'])): ?>
                                 <div class="invalid-feedback"><?php echo $errors['cvv']; ?></div>
                             <?php endif; ?>

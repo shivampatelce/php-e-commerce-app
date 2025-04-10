@@ -16,9 +16,9 @@ $pdf->Cell(0, 10, 'INVOICE', 0, 1, 'C');
 $pdf->SetFont('Arial', '', 12);
 
 // Company Info
-$pdf->Cell(100, 10, 'Your Company Name', 0, 1);
+$pdf->Cell(100, 10, 'NextGadgets', 0, 1);
 $pdf->Cell(100, 6, '123 Street Name', 0, 1);
-$pdf->Cell(100, 6, 'City, Country', 0, 1);
+$pdf->Cell(100, 6, 'Kitchener, Canada', 0, 1);
 $pdf->Cell(100, 6, 'Phone: +1 234 567 890', 0, 1);
 $pdf->Ln(10);
 
