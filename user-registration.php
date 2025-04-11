@@ -90,61 +90,76 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card shadow-lg">
-                    <div class="card-body p-4">
-                        <h3 class="card-title text-center mb-4">Register</h3>
+    <main>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card shadow-lg">
+                        <div class="card-body p-4">
+                            <h3 class="card-title text-center mb-4">Register</h3>
 
-                        <?php if (!empty($errors['general'])) : ?>
-                            <div class="alert alert-danger"><?php echo $errors['general']; ?></div>
-                        <?php endif; ?>
+                            <?php if (!empty($errors['general'])) : ?>
+                                <div class="alert alert-danger"><?php echo $errors['general']; ?></div>
+                            <?php endif; ?>
 
-                        <form method="POST" id="registerForm" novalidate>
-                            <div class="mb-3">
-                                <label for="first_name" class="form-label">First Name</label>
-                                <input type="text" class="form-control <?php echo !empty($errors['first_name']) ? 'is-invalid' : ''; ?>" name="first_name" id="first_name" value="<?php echo htmlspecialchars($data['first_name']); ?>">
-                                <div class="invalid-feedback"><?php echo $errors['first_name'] ?? ''; ?></div>
-                            </div>
+                            <form method="POST" id="registerForm" novalidate>
+                                <div class="mb-3">
+                                    <label for="first_name" class="form-label">First Name</label>
+                                    <input type="text" class="form-control <?php echo !empty($errors['first_name']) ? 'is-invalid' : ''; ?>" name="first_name" id="first_name" value="<?php echo htmlspecialchars($data['first_name']); ?>">
+                                    <div class="invalid-feedback"><?php echo $errors['first_name'] ?? ''; ?></div>
+                                </div>
 
-                            <div class="mb-3">
-                                <label for="last_name" class="form-label">Last Name</label>
-                                <input type="text" class="form-control <?php echo !empty($errors['last_name']) ? 'is-invalid' : ''; ?>" name="last_name" id="last_name" value="<?php echo htmlspecialchars($data['last_name']); ?>">
-                                <div class="invalid-feedback"><?php echo $errors['last_name'] ?? ''; ?></div>
-                            </div>
+                                <div class="mb-3">
+                                    <label for="last_name" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control <?php echo !empty($errors['last_name']) ? 'is-invalid' : ''; ?>" name="last_name" id="last_name" value="<?php echo htmlspecialchars($data['last_name']); ?>">
+                                    <div class="invalid-feedback"><?php echo $errors['last_name'] ?? ''; ?></div>
+                                </div>
 
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control <?php echo !empty($errors['email']) ? 'is-invalid' : ''; ?>" name="email" id="email" value="<?php echo htmlspecialchars($data['email']); ?>">
-                                <div class="invalid-feedback"><?php echo $errors['email'] ?? ''; ?></div>
-                            </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control <?php echo !empty($errors['email']) ? 'is-invalid' : ''; ?>" name="email" id="email" value="<?php echo htmlspecialchars($data['email']); ?>">
+                                    <div class="invalid-feedback"><?php echo $errors['email'] ?? ''; ?></div>
+                                </div>
 
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control <?php echo !empty($errors['password']) ? 'is-invalid' : ''; ?>" name="password" id="password" value="<?php echo htmlspecialchars($data['password']); ?>">
-                                <div class="invalid-feedback"><?php echo $errors['password'] ?? ''; ?></div>
-                            </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control <?php echo !empty($errors['password']) ? 'is-invalid' : ''; ?>" name="password" id="password" value="<?php echo htmlspecialchars($data['password']); ?>">
+                                    <div class="invalid-feedback"><?php echo $errors['password'] ?? ''; ?></div>
+                                </div>
 
-                            <div class="mb-3">
-                                <label for="confirm_password" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control <?php echo !empty($errors['confirm_password']) ? 'is-invalid' : ''; ?>" name="confirm_password" id="confirm_password" value="<?php echo htmlspecialchars($data['confirm_password']); ?>">
-                                <div class="invalid-feedback"><?php echo $errors['confirm_password'] ?? ''; ?></div>
-                            </div>
+                                <div class="mb-3">
+                                    <label for="confirm_password" class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control <?php echo !empty($errors['confirm_password']) ? 'is-invalid' : ''; ?>" name="confirm_password" id="confirm_password" value="<?php echo htmlspecialchars($data['confirm_password']); ?>">
+                                    <div class="invalid-feedback"><?php echo $errors['confirm_password'] ?? ''; ?></div>
+                                </div>
 
-                            <div class="d-grid mb-3">
-                                <button type="submit" class="btn btn-primary">Register</button>
-                            </div>
+                                <div class="d-grid mb-3">
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </div>
 
-                            <div class="text-center">
-                                <p class="mb-0">Already have an account? <a href="login.php">Login here</a></p>
-                            </div>
-                        </form>
+                                <div class="text-center">
+                                    <p class="mb-0">Already have an account? <a href="login.php">Login here</a></p>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+
+    <footer class="bg-dark text-light mt-5 py-4">
+        <div class="container text-center">
+            <p class="mb-1">&copy; <?php echo date('Y'); ?> NextGadgets. All rights reserved.</p>
+            <ul class="list-inline">
+                <li class="list-inline-item">Created By:</li>
+                <li class="list-inline-item">Shivam Patel</li>
+                <li class="list-inline-item">Krish Lavani</li>
+                <li class="list-inline-item">Diksha Samotra</li>
+                <li class="list-inline-item">Jiten Shreshtha</li>
+            </ul>
+        </div>
+    </footer>
 
     <script>
         document.getElementById('email').addEventListener('blur', function() {

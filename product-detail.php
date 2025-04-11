@@ -18,7 +18,7 @@ $quantity = $cart->get_cart_quantity_by_id($productId);
 
 // Handle Add/Remove to/from cart
 if (isset($_POST['add_to_cart'])) {
-    $quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
+    $quantity = $_POST['quantity'] ? (int)$_POST['quantity'] : 1;
 
     $cart->add_to_cart($product, $quantity);
     header("Location: product-detail.php?id=" . $productId);
@@ -89,7 +89,7 @@ if (isset($_POST['remove_from_cart'])) {
                             <form method="post">
                                 <div class="mb-3">
                                     <label for="quantity" class="form-label">Quantity</label>
-                                    <input type="number" name="quantity" id="quantity" class="form-control" value="<?php echo htmlspecialchars($quantity); ?>" min="1" required>
+                                    <input type="number" name="quantity" id="quantity" class="form-control" value="<?php echo htmlspecialchars($quantity); ?>">
                                 </div>
 
                                 <?php if ($cart->is_product_available_in_cart($product['product_id'])) : ?>
@@ -116,6 +116,19 @@ if (isset($_POST['remove_from_cart'])) {
 
         </div>
     </main>
+
+    <footer class="bg-dark text-light mt-5 py-4">
+        <div class="container text-center">
+            <p class="mb-1">&copy; <?php echo date('Y'); ?> NextGadgets. All rights reserved.</p>
+            <ul class="list-inline">
+                <li class="list-inline-item">Created By:</li>
+                <li class="list-inline-item">Shivam Patel</li>
+                <li class="list-inline-item">Krish Lavani</li>
+                <li class="list-inline-item">Diksha Samotra</li>
+                <li class="list-inline-item">Jiten Shreshtha</li>
+            </ul>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

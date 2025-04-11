@@ -53,4 +53,17 @@ $cart->empty_cart();
             <a href="index.php" class="btn btn-primary">Continue Shopping</a>
         </div>
     </main>
+
+    <footer class="bg-dark text-light mt-5 py-4">
+        <div class="container text-center">
+            <p class="mb-1">&copy; <?php echo date('Y'); ?> NextGadgets. All rights reserved.</p>
+            <ul class="list-inline">
+                <li class="list-inline-item">Created By:</li>
+                <li class="list-inline-item">Shivam Patel</li>
+                <li class="list-inline-item">Krish Lavani</li>
+                <li class="list-inline-item">Diksha Samotra</li>
+                <li class="list-inline-item">Jiten Shreshtha</li>
+            </ul>
+        </div>
+    </footer>
 </body>

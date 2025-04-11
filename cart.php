@@ -53,55 +53,71 @@ $cart = $cartObj->get_cart();
             </div>
         </div>
     </nav>
-    <div class="container py-5">
-        <h2 class="text-center mb-4">Cart</h2>
 
-        <?php if (empty($cart)) : ?>
-            <div class="alert alert-warning text-center">
-                No products in the cart.<br /> <a href="index.php" class="btn btn-primary mt-2">Back to Catalog</a>
-            </div>
-        <?php else : ?>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Product Name</th>
-                        <th>Brand</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $totalAmount = 0;
-                    foreach ($cart as $item) :
-                        $itemTotal = $item['price'] * $item['quantity'];
-                        $totalAmount += $itemTotal;
-                    ?>
+    <main>
+        <div class="container py-5">
+            <h2 class="text-center mb-4">Cart</h2>
+
+            <?php if (empty($cart)) : ?>
+                <div class="alert alert-warning text-center">
+                    No products in the cart.<br /> <a href="index.php" class="btn btn-primary mt-2">Back to Catalog</a>
+                </div>
+            <?php else : ?>
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <td><img src="admin/<?php echo htmlspecialchars($item['image_path']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="img-fluid" style="max-width: 100px;"></td>
-                            <td><?php echo htmlspecialchars($item['name']); ?></td>
-                            <td><?php echo htmlspecialchars($item['brand']); ?></td>
-                            <td>$<?php echo number_format($item['price'], 2); ?></td>
-                            <td><?php echo $item['quantity']; ?></td>
-                            <td>$<?php echo number_format($itemTotal, 2); ?></td>
-                            <td>
-                                <a href="cart.php?product_id=<?php echo htmlspecialchars($item['id']); ?>" class="btn btn-danger mt-4">Remove</a>
-                            </td>
+                            <th>Image</th>
+                            <th>Product Name</th>
+                            <th>Brand</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $totalAmount = 0;
+                        foreach ($cart as $item) :
+                            $itemTotal = $item['price'] * $item['quantity'];
+                            $totalAmount += $itemTotal;
+                        ?>
+                            <tr>
+                                <td><img src="admin/<?php echo htmlspecialchars($item['image_path']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="img-fluid" style="max-width: 100px;"></td>
+                                <td><?php echo htmlspecialchars($item['name']); ?></td>
+                                <td><?php echo htmlspecialchars($item['brand']); ?></td>
+                                <td>$<?php echo number_format($item['price'], 2); ?></td>
+                                <td><?php echo $item['quantity']; ?></td>
+                                <td>$<?php echo number_format($itemTotal, 2); ?></td>
+                                <td>
+                                    <a href="cart.php?product_id=<?php echo htmlspecialchars($item['id']); ?>" class="btn btn-danger mt-4">Remove</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
 
-            <div class="d-flex justify-content-between">
-                <h4>Total: $<?php echo number_format($totalAmount, 2); ?></h4>
-                <a href="checkout.php" class="btn btn-success">Proceed to Checkout</a>
-            </div>
-        <?php endif; ?>
+                <div class="d-flex justify-content-between">
+                    <h4>Total: $<?php echo number_format($totalAmount, 2); ?></h4>
+                    <a href="checkout.php" class="btn btn-success">Proceed to Checkout</a>
+                </div>
+            <?php endif; ?>
 
-    </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-light mt-5 py-4">
+        <div class="container text-center">
+            <p class="mb-1">&copy; <?php echo date('Y'); ?> NextGadgets. All rights reserved.</p>
+            <ul class="list-inline">
+                <li class="list-inline-item">Created By:</li>
+                <li class="list-inline-item">Shivam Patel</li>
+                <li class="list-inline-item">Krish Lavani</li>
+                <li class="list-inline-item">Diksha Samotra</li>
+                <li class="list-inline-item">Jiten Shreshtha</li>
+            </ul>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
